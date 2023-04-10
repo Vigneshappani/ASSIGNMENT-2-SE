@@ -6,11 +6,16 @@ import TdTag from "./TdTag"
 class Table extends Component{
     constructor(props){
         super(props);
+        this.deleteById = this.deleteById.bind(this);
+    }
+
+    deleteById(id){
+        this.props.deleteById(id);
     }
 
     renderAction(data){
         if(this.props.allowAction){
-            return <TdTag value={data["_id"]} isLinked="true" linkPrefix={this.props.actionLinkPrefix}></TdTag>
+            return <TdTag deleteById={this.deleteById} value={data["_id"]} isLinked="true" linkPrefix={this.props.actionLinkPrefix}></TdTag>
         }
     }
 

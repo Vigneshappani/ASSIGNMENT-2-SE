@@ -1,0 +1,53 @@
+version: "3.7"
+services:
+  # nginx:
+  #   build:
+  #     context: ./nginx_service
+  #   hostname: "nginx"
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   environment:
+  #     - DOMAIN=${DOMAIN}
+  #   networks:
+  #     - inventory-network
+  #   links:
+  #     - back_service
+  #   restart: unless-stopped
+
+  mongo:
+    hostname: "mongo"
+    image: mongo:latest
+    ports:
+      - "127.0.0.1:27018:27017"
+    volumes:
+      - data-volume:/data/db
+    networks:
+      - inventory-network
+    restart: unless-stopped
+
+  back_service:
+    build:
+      context: ./back
+    hostname: "back"
+    ports:
+      - "127.0.0.1:3000:3000"
+    links:
+      - mongo     
+    depends_on:
+      - mongo     
+    networks:
+      - inventory-network
+    restart: unless-stopped
+        
+volumes:
+  data-volume:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: ${PWD}/data
+
+networks:
+  inventory-network:
+    driver: bridge

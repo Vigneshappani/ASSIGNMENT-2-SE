@@ -17,7 +17,7 @@ const fileUpload = require('express-fileupload');
 var databaseConfig = require('./config/database');
 mongoose.connect(databaseConfig.url ,
   {useNewUrlParser: true,},
-  () => console.log("Connected to DB")
+  () => console.log("Connected to DB ---", databaseConfig.url)
 );
 
 var itemRouter = require('./routes/item');

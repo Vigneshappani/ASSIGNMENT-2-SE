@@ -21,11 +21,12 @@ class DashboardPage extends Component{
     }
 
     getData(){
-        fetch('http://3.236.36.80:4000/data/', {
+        fetch('http://localhost:4000/data/', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': localStorage.getItem('token')
             },
         })
             .then((res) => res.json())

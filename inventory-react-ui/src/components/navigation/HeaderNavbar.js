@@ -7,13 +7,24 @@ class HeaderNavBar extends Component{
     constructor(props){
         super(props);
         this.userRole = "admin";
-        var navbarText = "";
         if(this.userRole == "admin"){
             this.navbarText = "Inventory Management"
         }
         else{
             this.navbarText = "Inventory Management"
         }
+        this.login = this.login.bind(this);
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(){        
+        localStorage.clear();
+        this.props.setLogged(false);
+        this.props.setAuth(true);
+    }
+
+    login(){
+        this.props.setAuth(true);        
     }
 
 
@@ -27,7 +38,8 @@ class HeaderNavBar extends Component{
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ml-auto">
-                            <NavLiTag link="/" className="nav-link" itemValue="Home"></NavLiTag>
+                            {!this.props.logged && <span onClick={this.login} style={{color: 'white', paddingTop: 8,  cursor: 'pointer'}}>Login</span>}
+                            {this.props.logged && <span onClick={this.logout} style={{color: 'white', paddingTop: 8, marginLeft: 5, cursor: 'pointer'}}>Logout</span>}
                         </ul>
                     </div>
                 </nav>

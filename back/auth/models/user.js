@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
         enum: ['active', 'deactive'],
         default: 'active'
     },
-    mobileNo:{ type:String },
 });
 
 

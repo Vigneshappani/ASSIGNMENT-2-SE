@@ -22,6 +22,7 @@ mongoose.connect(databaseConfig.url ,
 
 var itemRouter = require('./routes/item');
 var dataRouter = require('./routes/data');
+var userRouter = require('./auth/routes/user');
 
 
 http.listen(process.env.PORT || port);
@@ -38,11 +39,11 @@ app.use(cors());
 
 
 
-// const nf = '/.netlify/functions/app';
 const nf = '';
 
 app.use(nf+'/item',itemRouter );
 app.use(nf+'/data', dataRouter);
+app.use(nf+'/auth', userRouter);
 
 module.exports = app;
 module.exports.handler = serverless(app);

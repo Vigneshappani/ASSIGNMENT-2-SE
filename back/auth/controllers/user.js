@@ -33,12 +33,11 @@ exports.getAccessToken = getAccessToken;
 exports.getRefreshToken = getRefreshToken;
 
 exports.register =  (req, res, next) => {
-    const {email, password, mobileNo} = req.body;
+    const {email, password} = req.body;
 
     let user = new User({
         email: email,
         password: password,
-        mobileNo: mobileNo
     });
 
     user.save(function (err, user) {

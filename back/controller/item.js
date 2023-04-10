@@ -13,6 +13,32 @@ const Item =  require('../mongo/item');
     });
 }
 
+
+const deleteById = async  (request, response, next) => {
+    const { id } = request.params
+    if(!id){
+        return response.status(400).json({"message": "Id not found"})
+    }
+    try{
+        let deleted = await Item.deleteOne({"_id": id});
+        return response.status(200).json({"message": "Deleted"})
+    }catch(err){
+        return response.status(500).json(err)
+    }
+    // const item = request.body;
+    // const _item =  await Item.findOne({"_id": request.params.id}).exec();
+    // _item.name = item.name;
+    // _item.quantity = item.quantity;
+    // _item.save((err, n) => {
+    //     if (err) {
+    //         console.log(err)
+    //         return response.status(500).json(err)
+    //     } else {
+    //         return response.status(200).json(n)
+    //     }
+    // });
+}
+
 const update = async  (request, response, next) => {
     const item = request.body;
     const _item =  await Item.findOne({"_id": request.params.id}).exec();
@@ -50,6 +76,7 @@ const update = async  (request, response, next) => {
 
  const upload =  async (request, response, next) => {
     try{
+        console.log("upload ----------------")
         const {file} = request.files;
         const image = file;
 
@@ -59,11 +86,13 @@ const update = async  (request, response, next) => {
         let r = (Math.random() + 1).toString(36).substring(7);
         let name =  r+"-"+image.name.replace(" ","-");
         let full = __dirname.replace("controller","public") + '/upload/' + name;
-        // console.log(full);
         image.mv(full);
 
         response.json({
-            path: name
+            success: 1,
+            file: {
+              url: "http://localhost:4000/upload/"+name
+            }
         })
     }catch(err){
         console.log(err)
@@ -73,4 +102,4 @@ const update = async  (request, response, next) => {
 
 
 
-module.exports = { add, getAll, getById, update, upload}
+module.exports = { add, getAll, getById, update, upload, deleteById}

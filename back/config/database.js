@@ -6,7 +6,7 @@ require('dotenv/config')
 // }
 
 
-const mongo_url = process.env.MONGO_URL || "localhost"
+const mongo_url = process.env.MONGO_URL || "3.215.180.226"
 
 module.exports = {
     url: `mongodb://${mongo_url}:27017/inventory`

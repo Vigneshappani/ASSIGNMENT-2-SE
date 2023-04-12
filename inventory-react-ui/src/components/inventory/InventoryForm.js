@@ -5,7 +5,7 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 
 class InventoryForm extends Component{
-    path  = "http://localhost:4000/upload/"
+    path  = "http://3.215.180.226:4000/upload/"
     constructor(props){
         super(props);       
         this.state = {_id: '', name: '', quantity: 0, image: '', action: 'add', 
@@ -28,7 +28,7 @@ class InventoryForm extends Component{
     }
 
     getOne(id){
-        fetch('http://localhost:4000/item/'+id, {
+        fetch('http://3.215.180.226:4000/item/'+id, {
             method: 'GET', 
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -55,7 +55,7 @@ class InventoryForm extends Component{
         event.preventDefault();
 
         let method = "POST";
-        let url = "http://localhost:4000/item"
+        let url = "http://3.215.180.226:4000/item"
         if(this.state._id){
             method = "PUT";
             url = url + "/"+ this.state._id;
@@ -70,7 +70,7 @@ class InventoryForm extends Component{
         if(method === 'POST' && this.state.file){
             const formData = new FormData();
             formData.append('file', this.state.file);
-            let res = await fetch("http://localhost:4000/item/upload", {
+            let res = await fetch("http://3.215.180.226:4000/item/upload", {
                 method: 'POST',
                 body: formData,
                 headers: {

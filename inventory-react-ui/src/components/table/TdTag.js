@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import AnchorTag from "../Anchortag";
 
 class TdTag extends Component{
-    path  = "http://localhost:4000/upload/"
+    path  = "http://3.215.180.226:4000/upload/"
     constructor(props){
         super(props);
         this.deleteById = this.deleteById.bind(this);

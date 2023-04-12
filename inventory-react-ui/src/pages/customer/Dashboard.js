@@ -21,7 +21,7 @@ class DashboardPage extends Component{
     }
 
     getData(){
-        fetch('http://localhost:4000/data/', {
+        fetch('http://3.215.180.226:4000/data/', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',

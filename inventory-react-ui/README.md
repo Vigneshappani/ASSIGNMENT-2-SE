@@ -2,10 +2,10 @@
 
 
 ## Available URLs
-* For admin: `http://localhost:3000/admin/`
-* For customer: `http://localhost:3000`
-* Login: `http://localhost:3000/login`
-* Register: `http://localhost:3000/registration` 
+* For admin: `http://3.215.180.226:3000/admin/`
+* For customer: `http://3.215.180.226:3000`
+* Login: `http://3.215.180.226:3000/login`
+* Register: `http://3.215.180.226:3000/registration` 
 
 ## Available Scripts
 
@@ -14,7 +14,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://3.215.180.226:3000](http://3.215.180.226:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.

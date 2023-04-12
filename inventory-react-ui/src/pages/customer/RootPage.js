@@ -4,8 +4,6 @@ import HeaderNavBar from "../../components/navigation/HeaderNavbar";
 import AnchorTag from "../../components/Anchortag";
 import DashboardPage from "../../pages/customer/Dashboard";
 import InventoryPage from "./inventory/InventoryPage";
-import Login from "../../components/auth/Login";
-import Register from "../../components/auth/Register";
 import AuthPage from "../auth/AuthPage";
 import UserInfo from "../../components/user/UserInfo";
 

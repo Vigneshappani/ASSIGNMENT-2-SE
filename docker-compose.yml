@@ -19,7 +19,7 @@ services:
     hostname: "mongo"
     image: mongo:latest
     ports:
-      - "127.0.0.1:27018:27017"
+      - "127.0.0.1:27017:27017"
     volumes:
       - data-volume:/data/db
     networks:
@@ -31,7 +31,7 @@ services:
       context: ./back
     hostname: "back"
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:4000:4000"
     links:
       - mongo     
     depends_on:
@@ -39,6 +39,20 @@ services:
     networks:
       - inventory-network
     restart: unless-stopped
+
+  front_end:
+    build:
+      context: ./inventory-react-ui
+    hostname: "front_end"
+    ports:
+      - "127.0.0.1:3000:3000"
+    links:
+      - back_service     
+    depends_on:
+      - back_service     
+    networks:
+      - inventory-network
+    restart: unless-stopped    
         
 volumes:
   data-volume:

@@ -36,6 +36,8 @@ services:
       - mongo     
     depends_on:
       - mongo     
+    volumes:
+      - data-volume:/public/upload
     networks:
       - inventory-network
     restart: unless-stopped
@@ -45,7 +47,7 @@ services:
       context: ./inventory-react-ui
     hostname: "front_end"
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:80:3000"
     links:
       - back_service     
     depends_on:

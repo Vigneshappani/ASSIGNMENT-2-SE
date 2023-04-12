@@ -89,10 +89,7 @@ const update = async  (request, response, next) => {
         image.mv(full);
 
         response.json({
-            success: 1,
-            file: {
-              url: "http://localhost:4000/upload/"+name
-            }
+            path: name
         })
     }catch(err){
         console.log(err)

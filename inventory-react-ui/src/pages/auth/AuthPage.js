@@ -11,7 +11,7 @@ class AuthPage extends Component{
     }
 
     login(){
-        fetch('http://3.215.180.226:4000/auth/login', {
+        fetch('http://3.92.81.163:4000/auth/login', {
             method: 'POST',
             body: JSON.stringify({email: this.state.username, password: this.state.password }), 
             headers: {
@@ -33,7 +33,7 @@ class AuthPage extends Component{
     }
 
     register(){
-        fetch('http://3.215.180.226:4000/auth/reister', {
+        fetch('http://3.92.81.163:4000/auth/reister', {
             method: 'POST',
             body: JSON.stringify({email: this.state.username, password: this.state.password }), 
             headers: {

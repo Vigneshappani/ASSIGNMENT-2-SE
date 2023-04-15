@@ -15,7 +15,7 @@ class InventoryList extends Component{
 
 
     deleteById(id){
-        fetch('http://3.215.180.226:4000/item/'+id, {
+        fetch('http://3.92.81.163:4000/item/'+id, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -30,7 +30,7 @@ class InventoryList extends Component{
     }
 
     getData(){
-        fetch('http://3.215.180.226:4000/item', {
+        fetch('http://3.92.81.163:4000/item', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
